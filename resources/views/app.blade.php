@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Vuebnb</title>
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/vue-style.css') }}" type="text/css">
 </head>
 <body>
   <div id="toolbar"><img class="icon" src="{{ asset('images/logo.png') }}"><h1>vuebnb</h1></div>
