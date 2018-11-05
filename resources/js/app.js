@@ -1,30 +1,22 @@
+import "core-js/fn/object/assign";
 import Vue from 'vue';
+import App from '../components/App.vue';
+
 import { populateAmenitiesAndPrices } from './helpers';
-import ImageCarousel from '../components/ImageCarousel.vue';
+
+import ListingPage from '../components/ListingPage.vue';
+import HomePage from '../components/HomePage.vue';
+import router from './router';
 
 let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model);
 
 var app = new Vue({
     el: '#app',
-    data: Object.assign(model, {
-      headerImageStyle: {
-        'background-image': `url(${model.images[0]})`
-      },
-      contracted: true, 
-      modalOpen: false
-    }), 
-    components: {
-      ImageCarousel
-    }, 
-    watch: {
-      modalOpen: function() {
-        var className = 'modal-open';
-        if (this.modalOpen) {
-          document.body.classList.add(className);
-        } else {
-          document.body.classList.remove(className);
-        }
-      }
-    }
+    render: h => h(App),
+    router, 
+    routes: [
+      { path: '/', component: HomePage, name: 'home' },
+      { path: '/listing/:listing', component: ListingPage, name: 'listing' }
+    ]
   });
