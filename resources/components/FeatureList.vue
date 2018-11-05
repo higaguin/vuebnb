@@ -4,9 +4,9 @@
     <div class="list">
       <div class="title"><strong>{{ title }}</strong></div>
       <div class="content">
-          <div class="list-item" v-for="item in items">
-            <slot v-bind="item"></slot>
-            </div>
+          <!-- <div class="list-item" v-for="item in items"> -->
+            <!-- <slot v-bind="item"></slot>
+            </div> -->
       </div>
     </div>
   </div>
