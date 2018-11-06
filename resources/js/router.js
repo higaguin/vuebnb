@@ -7,7 +7,7 @@ import ListingPage from '../components/ListingPage.vue';
 export default new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: HomePage },
-    { path: '/listing/:listing', component: ListingPage }
+    { path: '/', component: HomePage, name: 'home' },
+    { path: '/listing/:listing', component: ListingPage, name: 'listing' }
   ]
 });
