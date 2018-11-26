@@ -22,8 +22,7 @@ mix.js('resources/js/app.js', 'public/js')
     .copy('node_modules/font-awesome/fonts',  'public/fonts')
     .copy('resources/images', 'public/images')
     .browserSync({ 
-        proxy: process.env.APP_URL,
-        open: false
+        proxy: 'http://vuebnb.test'
       })
     .options({
         extractVueStyles: 'public/css/vue-style.css'

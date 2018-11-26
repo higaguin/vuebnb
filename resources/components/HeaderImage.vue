@@ -3,22 +3,27 @@
     <div 
       class="header-img" 
       :style="headerImageStyle" 
-      @click="$emit('header-clicked')"
-    >
+      @click="$emit('header-clicked')">
+      <listing-save :id="id" :button="true"></listing-save>
       <button class="view-photos">View Photos</button>
     </div>
   </div>
 </template>
 <script>
-export default {
-    computed: {
-      headerImageStyle() {
-        return {
-          'background-image': `url(${this.imageUrl})`
-        };
-      }
-    },
-    props: [ 'image-url' ]
+  import ListingSave from './ListingSave.vue';
+
+  export default {
+      components: {
+        ListingSave
+      },
+      computed: {
+        headerImageStyle() {
+          return {
+            'background-image': `url(${this.imageUrl})`
+          };
+        }
+      },
+      props: [ 'image-url', 'id' ]
   }
 </script>
 <style>

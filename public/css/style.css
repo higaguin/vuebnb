@@ -2457,6 +2457,28 @@ body {
   }
 }
 
+.listing-container {
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+@media (min-width: 744px) {
+  .listing-container {
+    width: 696px;
+  }
+}
+
+.home-container {
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+@media (min-width: 1131px) {
+  .home-container {
+    width: 1080px;
+  }
+}
+
 #toolbar {
   display: flex;
   align-items: center;
@@ -2657,5 +2679,18 @@ body.modal-open {
 @media (min-width: 744px) {
   .carousel-control {
       font-size: 3rem;
+  }
+}
+
+.saved-container {
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+@media (min-width: 1131px) {
+  .saved-container {
+    width: 1095px;
+    padding-left: 40px;
+    margin-bottom: -10px;
   }
 }

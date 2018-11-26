@@ -1,40 +1,36 @@
 <template>
   <div>
     <header-image 
-      :image-url="images[0]" 
-      @header-clicked="openModal"
+      v-if="listing.images[0]" 
+      :image-url="listing.images[0]" 
+      @header-clicked="openModal" 
+      :id="listing.id"
     ></header-image>
-    <div class="container">
+    <div class="listing-container">
       <div class="heading">
-        <h1>{{ title }}</h1>
-        <p>{{ address }}</p>
+        <h1>{{ listing.title }}</h1>
+        <p>{{ listing.address }}</p>
       </div>
       <hr>
       <div class="about">
         <h3>About this listing</h3>
-        <expandable-text>{{ about }}</expandable-text>
+        <expandable-text>{{ listing.about }}</expandable-text>
       </div>
       <div class="lists">
-        <feature-list title="Amenities" :items="amenities">
-          <template slot-scope="amenity">
-            <i class="fa fa-lg" :class="amenity.icon"></i>
-            <span>{{ amenity.title }}</span>
-          </template>
+        <feature-list title="Amenities" :items="listing.amenities">
+          ...
         </feature-list>
-        <feature-list title="Prices" :items="prices">
-          <template slot-scope="price">
-            {{ price.title }}: <strong>{{ price.value }}</strong>
-          </template>
+        <feature-list title="Prices" :items="listing.prices">
+          ...
         </feature-list>
       </div>
     </div>
     <modal-window ref="imagemodal">
-      <image-carousel :images="images"></image-carousel>
+      <image-carousel :images="listing.images"></image-carousel>
     </modal-window>
   </div>
 </template>
 <script>
-  import routeMixin from '../js/route-mixin';
   import { populateAmenitiesAndPrices } from '../js/helpers';
 
   import ImageCarousel from './ImageCarousel.vue';
@@ -44,7 +40,6 @@
   import ExpandableText from './ExpandableText.vue';
 
   export default {
-    mixins: [ routeMixin ],
     data() {
       return {
         title: null,
@@ -52,7 +47,13 @@
         address: null,
         amenities: [],
         prices: [],
-        images: []
+        images: [], 
+        id: null
+      }
+    },
+    computed: {
+      listing() {
+        return populateAmenitiesAndPrices( this.$store.getters.getListing(this.$route.params.listing) );
       }
     },
     methods: {
