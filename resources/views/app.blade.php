@@ -14,6 +14,7 @@
   </div>
   <script type="text/javascript">
     window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
+    window.csrf_token = "{{ csrf_token() }}"
   </script>
   <script src="{{ asset('js/app.js') }}"></script>
 </body>
